@@ -11,7 +11,7 @@ a research question, and validates whether that approach is able to
 yield accurate results.
 
 <p align="center">
-<img src="./UnBlender_workflow.png" alt="The UnBlender workflow" width="500">
+<img src="./UnBlender_workflow.png" alt="The UnBlender workflow" width="550">
 </p>
 **Why is this important?** Because otherwise there is a very realistic
 risk of generating meaningless deconvolution results. For reliable
@@ -36,9 +36,12 @@ parameters. The GUI evaluates the accuracy of the chosen deconvolution
 approach, and - if sufficient - deconvolutes the user's transcriptomics
 dataset.
 
-Output: - A summary of the expected deconvolution accuracy per cell
+Output: 
+
+- A summary of the expected deconvolution accuracy per cell
 type: figures and a table to download for inclusion in a manuscript
-supplement - Deconvolution analysis results of your transcriptomics
+supplement 
+- Deconvolution analysis results of your transcriptomics
 dataset
 
 Want to use it now? A beta version of the GUI with full functionality is
