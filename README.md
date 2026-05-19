@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # UnBlender: reliable cell type deconvolution
 
 UnBlender allows respiratory scientists to perform cell type
