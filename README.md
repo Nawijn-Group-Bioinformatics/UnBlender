@@ -10,8 +10,9 @@ deconvolution into a cell type label granularity that suits the need of
 a research question, and validates whether that approach is able to
 yield accurate results.
 
-<img src="./UnBlender_workflow.png" alt="The UnBlender workflow" width="600">
-
+<p align="center">
+<img src="./UnBlender_workflow.png" alt="The UnBlender workflow" width="500">
+</p>
 **Why is this important?** Because otherwise there is a very realistic
 risk of generating meaningless deconvolution results. For reliable
 results, it is essential to test whether the chosen combination of cell
