@@ -8,18 +8,20 @@ config['n_cells'] = 300
 config['gene_IDs'] = "HUGO" # HUGO or ENSG
 config['correct_for_expression_levels'] ='correct_false' # correct_true or correct_false
 config['balanced_ref'] = 'balanced_true' # balanced_true or balanced_false
+config['HLCA_file'] = 'HLCA_v1.1_20220725.h5ad'
 
 
 rule all:
 	input:
-		config['output_dir'] + 'output_metrics.txt'
+		config['output_dir'] + '/deconvolution_accuracy.png'
 
 rule get_reference_data:
 	input:
 		config['HLCA_file']
 	output:
 		config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) + "cells_HUGO.txt" ,
-		temp(config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) + "cells_ENSG.txt")
+		config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) + "cells_ENSG.txt"
+		#temp(config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) + "cells_ENSG.txt")
 	shell:
 		"python3 get_reference_data.py " + config['sample_type'] + ' ' + str(config['n_cells'])  + ' {input} ' + 
 		config['output_dir'] + ' ' + config['config_filename'] + ' ' + config['balanced_ref']
@@ -67,7 +69,9 @@ rule process_deconvolution:
 		config['output_dir'] + "/" + config['sample_type'] + "_deconvolution_reference_data.txt"
 
 	output:
-		config['output_dir'] + 'output_metrics.txt',
+		config['output_dir'] + '/pseudobulk_composition.png',
+		config['output_dir'] + '/deconvolution_accuracy.png',
+		config['output_dir'] + '/estimated_vs_true_proportions.png',
 
 	shell:
 		"Rscript process_deconv_outputs.R " + config['output_dir'] + '/cell_counts.csv' + ' ' + config['output_dir'] +
@@ -87,5 +91,5 @@ rule process_deconvolution:
 		'CIBERSORTx_' + config['sample_type'] + "_deconvolution_reference_data_inferred_phenoclasses.CIBERSORTx_" + config['sample_type'] + 
 		"_deconvolution_reference_data_inferred_refsample.bm.K999.txt " + config['output_dir'] + '/' + config['sample_type'] + '_signature_matrix.txt; ' +
 		# clean up
-		'rm -r '+ config['output_dir'] + '/CIBERSORTx_output; ' +
-		'rm ' + config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) + "cells_HUGO.txt" 
+		'rm -r '+ config['output_dir'] + '/CIBERSORTx_output; '# +
+		#'rm ' + config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) + "cells_HUGO.txt" 

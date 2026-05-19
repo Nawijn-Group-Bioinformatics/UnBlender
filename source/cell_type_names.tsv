@@ -1,0 +1,62 @@
+ann_level_1	ann_level_2	ann_level_3	ann_level_4	ann_level_5
+Endothelial	Blood vessels	EC arterial		
+Endothelial	Blood vessels	EC capillary	EC aerocyte capillary	
+Endothelial	Blood vessels	EC capillary	EC general capillary	
+Endothelial	Blood vessels	EC venous	EC venous pulmonary	
+Endothelial	Blood vessels	EC venous	EC venous systemic	
+Endothelial	Lymphatic EC	Lymphatic EC differentiating	3_Lymphatic EC differentiating	
+Endothelial	Lymphatic EC	Lymphatic EC mature	3_Lymphatic EC mature	
+Endothelial	Lymphatic EC	Lymphatic EC proliferating	3_Lymphatic EC proliferating	
+Epithelial	Airway epithelium	Basal	Basal resting	
+Epithelial	Airway epithelium	Basal	Hillock-like	
+Epithelial	Airway epithelium	Basal	Suprabasal	
+Epithelial	Airway epithelium	Multiciliated lineage	Deuterosomal	
+Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated	Multiciliated (nasal)
+Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated	Multiciliated (non-nasal)
+Epithelial	Airway epithelium	Rare	Ionocyte	
+Epithelial	Airway epithelium	Rare	Neuroendocrine	
+Epithelial	Airway epithelium	Rare	Tuft	
+Epithelial	Airway epithelium	Secretory	Club	Club (nasal)
+Epithelial	Airway epithelium	Secretory	Club	Club (non-nasal)
+Epithelial	Airway epithelium	Secretory	Goblet	Goblet (bronchial)
+Epithelial	Airway epithelium	Secretory	Goblet	Goblet (nasal)
+Epithelial	Airway epithelium	Secretory	Goblet	Goblet (subsegmental)
+Epithelial	Airway epithelium	Secretory	Transitional Club-AT2	AT0
+Epithelial	Airway epithelium	Secretory	Transitional Club-AT2	pre-TB secretory
+Epithelial	Alveolar epithelium	AT1		
+Epithelial	Alveolar epithelium	AT2		
+Epithelial	Alveolar epithelium	AT2	AT2 proliferating	
+Epithelial	Submucosal Gland	Submucosal Secretory	SMG duct	
+Epithelial	Submucosal Gland	Submucosal Secretory	SMG mucous	
+Epithelial	Submucosal Gland	Submucosal Secretory	SMG serous	SMG serous (bronchial)
+Epithelial	Submucosal Gland	Submucosal Secretory	SMG serous	SMG serous (nasal)
+Immune	Hematopoietic stem cells			
+Immune	Lymphoid	B cell lineage	B cells	
+Immune	Lymphoid	B cell lineage	Plasma cells	
+Immune	Lymphoid	Innate lymphoid cell NK	NK cells	
+Immune	Lymphoid	T cell lineage	CD4 T cells	
+Immune	Lymphoid	T cell lineage	CD8 T cells	
+Immune	Lymphoid	T cell lineage	T cells proliferating	
+Immune	Myeloid	Dendritic cells	DC1	
+Immune	Myeloid	Dendritic cells	DC2	
+Immune	Myeloid	Dendritic cells	Migratory DCs	
+Immune	Myeloid	Dendritic cells	Plasmacytoid DCs	
+Immune	Myeloid	Macrophages	Alveolar macrophages	
+Immune	Myeloid	Macrophages	Alveolar macrophages	Alveolar Mph CCL3+
+Immune	Myeloid	Macrophages	Alveolar macrophages	Alveolar Mph MT-positive
+Immune	Myeloid	Macrophages	Alveolar macrophages	Alveolar Mph proliferating
+Immune	Myeloid	Macrophages	Interstitial macrophages	Interstitial Mph perivascular
+Immune	Myeloid	Macrophages	Interstitial macrophages	Monocyte-derived Mph
+Immune	Myeloid	Mast cells		
+Immune	Myeloid	Monocytes	Classical monocytes	
+Immune	Myeloid	Monocytes	Non-classical monocytes	
+Stroma	Fibroblast lineage	Fibroblasts	Adventitial fibroblasts	
+Stroma	Fibroblast lineage	Fibroblasts	Alveolar fibroblasts	
+Stroma	Fibroblast lineage	Fibroblasts	Peribronchial fibroblasts	
+Stroma	Fibroblast lineage	Fibroblasts	Pericytes	
+Stroma	Fibroblast lineage	Fibroblasts	Subpleural fibroblasts	
+Stroma	Fibroblast lineage	Myofibroblasts		
+Stroma	Mesothelium			
+Stroma	Smooth muscle			
+Stroma	Smooth muscle	Fibromyocytes		
+Stroma	Smooth muscle	SM activated stress response		

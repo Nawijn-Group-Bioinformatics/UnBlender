@@ -7,7 +7,6 @@ config_filename: "/home/user/path/to/example_config.yaml" # absolute path to fil
 sample_type: "parenchyma" # options: parenchyma, bronchial_brush, nasal_brush, bronchial_biopsy
 output_dir: "/home/user/path/to/output_dir/" # absolute path to directory
 filter_reference: 'no_filter' # options: 'no_filter' or absolute path to file
-HLCA_file: "./HLCA_file.h5ad" # path to the HLCA input file
 
 # Docker details
 email: "my.email.address@example.com" # The email address that matches your CIBERSORTx token
