@@ -1,33 +1,39 @@
-UnBlender allows respiratory scientists to perform cell type deconvolution in a validated manner. Not all cell type deconvolution approaches are feasible, especially when using highly granular (i.e. high resolution, very specific) cell type labels. UnBlender leverages the Human Lung Cell Atlas reference data [(Sikkema et al., 2023)](https://www.nature.com/articles/s41591-023-02327-2) to allow the user to specify a cell type label granularity that suits the needs of their research question, and then validates whether that approach is able to yield accurate results.
+# UnBlender: reliable cell type deconvolution
+UnBlender allows respiratory scientists to perform cell type deconvolution with a custom, validated approach. Not all cell type deconvolution analyses will yield reliable results, especially when using highly granular (i.e. high resolution, very specific) cell type labels. UnBlender leverages the Human Lung Cell Atlas [(Sikkema et al., 2023)](https://www.nature.com/articles/s41591-023-02327-2) to perform deconvolution into a cell type label granularity that suits the need of a research question, and validates whether that approach is able to yield accurate results.
 
-Why is this important? Because otherwise there is a very realistic risk of generating meaningless deconvolution results. For reliable results, it is essential to test whether the chosen combination of cell types *can* accurately be deconvoluted in the chosen sample type.
+**Why is this important?** Because otherwise there is a very realistic risk of generating meaningless deconvolution results. For reliable results, it is essential to test whether the chosen combination of cell types *can* accurately be deconvoluted in the chosen sample type.
 
-How does UnBlender evaluate deconvolution accuracy? In short: by deconvoluting pseudo-bulk samples with a known cell type composition. More information can be found in [TODO].
+**How does UnBlender evaluate deconvolution accuracy?** In short: by deconvoluting pseudo-bulk samples with a known cell type composition. More information can be found in [TODO].
+
+**Which sample types are available?** At the moment, UnBlender can be run to evaluate deconvolution strategies for nasal brush, bronchial brush, bronchial biopsy and parenchymal resection samples.
+
+---
 
 ### Graphical user interface
-UnBlender will soon be available as an easy to use graphical user interface (GUI), with a point-and-click menus to configure analysis parameters. The UnBlender GUI evaluates deconvolution accuracy of the specified approach, and can then be used to deconvolute your own transcriptomics dataset. The GUI can be used for deconvolution of nasal brush, bronchial brush, bronchial biopsy and parenchymal resection samples.
+UnBlender will soon be available as an easy to use graphical user interface (GUI), with a point-and-click menu to configure analysis parameters. The GUI evaluates the accuracy of the chosen deconvolution approach, and - if sufficient - deconvolutes the user's transcriptomics dataset.
 
-Output of the UnBlender GUI:
-- A visual summary of expected deconvolution accuracy per cell type
-- A table of deconvolution accuracy evaluation results
-- Deconvolution analysis results on your transcriptomics dataset
+Output:
+- A summary of the expected deconvolution accuracy per cell type: figures and a table to download for inclusion in a manuscript supplement
+- Deconvolution analysis results of your transcriptomics dataset
 
-Want to try it now? A beta version of the GUI with full functionality is available for testers, contact us at unblender.info@gmail.com or submit an issue to this repository.
+Want to use it now? A beta version of the GUI with full functionality is available for testers, contact us at unblender.info@gmail.com or submit an issue to this repository.
+
+---
 
 ### Command line interface
-For those who prefer command line functionality, this GitHub repository provides a pipeline for the command line interface (CLI). The UnBlender CLI evaluates a specified deconvolution approach in the selected sample type, and returns the following:
+This repository provides a pipeline for the command line interface (CLI), which evaluates a chosen deconvolution approach and returns:
 
-- A summary of the expected deconvolution accuracy
-- A signature matrix that can be used to deconvolute your transcriptomics dataset
+- A summary of the expected deconvolution accuracy per cell type: figures and a table to download for inclusion in a manuscript supplement
+- A signature matrix to use to deconvolute your transcriptomics dataset
 - The reference data used to generate the signature matrix
 
-Then, the user can take the signature matrix (or reference data) and perform cell type deconvolution analysis on their dataset. The signature matrix can be saved and shared for future analyses, and easily be incorporated into an existing deconvolution workflow using your tool of preference. 
+The user can take the signature matrix (or reference data) and perform a deconvolution analysis on their dataset. The signature matrix can be saved and shared for future analyses, and easily be incorporated into an existing workflow using your favourite tool. 
 
 #### How to use the UnBlender CLI:
 1) Install CIBERSORTx (docker), and activate it.
 2) Install & activate the conda environment supplied with the code.
 3) Configure your pipeline run using a config.yaml file (example file is provided, see below for parameters)
-4) [Download the .h5ad HLCA file (core).](https://cellxgene.cziscience.com/collections/6f6d381a-7701-4781-935c-db10d30de293)
+4) [Download the .h5ad HLCA file (core).](https://cellxgene.cziscience.com/collections/6f6d381a-7701-4781-935c-db10d30de293) into the UnBlender /source folder
 4) In your command line interface, go to the directory that contains the Snakemake file.
 5) Run the pipeline using the following command: 
 	snakemake -c1 --configfile [config_file_name.yaml]
@@ -40,7 +46,7 @@ Then, the user can take the signature matrix (or reference data) and perform cel
 - HLCA_file: path to the .h5ad HLCA file.
 - email: the email address with which you run CIBERSORTx
 - token: your private CIBERSORTx token
-- cell_types: the cell types you wish to deconvolute, and which HLCA annotation level they correspond to. (See [HLCA supplementary table 4](https://www.nature.com/articles/s41591-023-02327-2#Sec57) for available cell types & levels.) Format: a nested YAML list. Sometimes it is useful to merge two cell types with similar gene expression profiles into one category, which is possible as shown in the example below for basal and secretory cells:
+- cell_types: the cell types you wish to deconvolute, and which HLCA annotation level they correspond to. (See "cell_type_names.tsv" file for an overview of available cell types, listed per level.) Format: a nested YAML list. Sometimes it is useful to merge two cell types with similar gene expression profiles into one category, which is possible as shown in the example below for basal and secretory cells:
 
 ### Partial example cell type selection of a deconvolution setup into three categories:
 ```cell_types:
@@ -55,9 +61,21 @@ Then, the user can take the signature matrix (or reference data) and perform cel
     - "Multiciliated lineage"
 ```
 
+---
+
+
 # Citing UnBlender
 Have you used UnBlender (GUI or CLI) to perform a cell type deconvolution analysis? Please cite us as: [TODO]
 
 # UnBlender is in beta version
 UnBlender pipeline code is in beta version. If you encounter any bugs, please submit an issue to this repository. Or contact unblender.info@gmail.com.
 (A known bug is that currently, use of certain cell types with uncommon non-alphanumeric characters in their name may cause problems running the pipeline.)
+
+---
+
+##### To do:
+Future CLI updates:
+- Generalize the pipeline for other reference datasets
+- Clean up the pipeline to simplify output
+- Add MuSiC deconvolution algorithm option
+- Enable signature matrix output with ENSG gene IDs
