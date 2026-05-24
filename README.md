@@ -65,7 +65,7 @@ existing workflow using your favourite tool.
 To install:
 1)  [Install CIBERSORTx](https://cibersortx.stanford.edu/) (docker)
 2)  Download the UnBlender CLI code
-3)  [Download the reference data file](https://drive.google.com/file/d/1gjVPQqy2OqOOnNlytqYAm1F1gmO34Tes/view?usp=drive_link) into the `/source` directory
+3)  [Download the reference data file](https://drive.google.com/drive/folders/1kveolLfL8awEbVrCf86X8ksUH5WEHJ9W?usp=sharing) into the `/source` directory
 4)  Install the conda environment: `conda env create -f environment.yml`
 
 To run:
