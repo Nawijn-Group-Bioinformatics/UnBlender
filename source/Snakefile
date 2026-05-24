@@ -1,14 +1,20 @@
-# configfile:
-# 	"config.yaml"
+#### About this script ####
+# UnBlender snakemake workflow
 
-# TODO: clean up deprecated parameter options
-# TODO: fix gene_IDs to also work with Ensemble IDs
+# TODO: clean up hard coding of deprecated parameters
+# TODO: ENSG gene ID option (currently only outputs ENSG ref data file)
+
+
+# Deprecated parameter options (TODO: clean up instead of hard coding)
 config['n_cells'] = 300
-
 config['gene_IDs'] = "HUGO" # HUGO or ENSG
 config['correct_for_expression_levels'] ='correct_false' # correct_true or correct_false
 config['balanced_ref'] = 'balanced_true' # balanced_true or balanced_false
-config['HLCA_file'] = 'HLCA_v1.1_20220725.h5ad'
+config['HLCA_file'] = 'UnBlender_reference_file_HLCA.h5ad'
+
+# Remove trailing slash of output dir if present
+if config['output_dir'].endswith('/'):
+    config['output_dir'] = config['output_dir'][:-1]
 
 
 rule all:
@@ -21,13 +27,11 @@ rule get_reference_data:
 	output:
 		config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) + "cells_HUGO.txt" ,
 		config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) + "cells_ENSG.txt"
-		#temp(config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) + "cells_ENSG.txt")
 	shell:
 		"python3 get_reference_data.py " + config['sample_type'] + ' ' + str(config['n_cells'])  + ' {input} ' + 
 		config['output_dir'] + ' ' + config['config_filename'] + ' ' + config['balanced_ref']
 
 rule filter_reference_data: 
-	# TODO: also filter ENSEMBL gene ref data output
 	input:
 		temp(config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) + "cells_HUGO.txt")
 	output:
@@ -74,22 +78,24 @@ rule process_deconvolution:
 		config['output_dir'] + '/estimated_vs_true_proportions.png',
 
 	shell:
-		"Rscript process_deconv_outputs.R " + config['output_dir'] + '/cell_counts.csv' + ' ' + config['output_dir'] +
-		'/CIBERSORTx_output/CIBERSORTx_Results.txt ' + config['output_dir'] + ' ' + config['correct_for_expression_levels'] +
-		' ' + 
-
-		config['output_dir'] + "/" + config['sample_type'] + "_deconvolution_reference_data.txt" +
-		
-		config['output_dir'] + "/" + "/CIBERSORTx_output/" +
-		'CIBERSORTx_' + config['sample_type'] + "_deconvolution_reference_data_inferred_phenoclasses.CIBERSORTx_" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) +
+		# process deconvolution results
+		"Rscript process_deconv_outputs.R " + config['output_dir'] + '/cell_counts.csv' + ' ' + 
+		config['output_dir'] + '/CIBERSORTx_output/CIBERSORTx_Results.txt ' + config['output_dir'] + 
+		' ' + config['correct_for_expression_levels'] + ' ' + config['output_dir'] + "/" + 
+		config['sample_type'] + "_deconvolution_reference_data.txt" + config['output_dir'] + "/" + 
+		"/CIBERSORTx_output/" + 'CIBERSORTx_' + config['sample_type'] + 
+		"_deconvolution_reference_data_inferred_phenoclasses.CIBERSORTx_" + config['sample_type'] + 
+		"_subsampled_matrix_max" + str(config['n_cells']) +
 		'cells_HUGO_filtered_inferred_refsample.bm.K999.txt;' +
 
 		# clean up
 		'rm ' + config['output_dir'] + '/cell_counts.csv; rm ' + config['output_dir'] + '/pseudobulks.csv; ' +
+		
 		# rename signature matrix file
-		'mv ' + config['output_dir'] + "/CIBERSORTx_output/" +
-		'CIBERSORTx_' + config['sample_type'] + "_deconvolution_reference_data_inferred_phenoclasses.CIBERSORTx_" + config['sample_type'] + 
-		"_deconvolution_reference_data_inferred_refsample.bm.K999.txt " + config['output_dir'] + '/' + config['sample_type'] + '_signature_matrix.txt; ' +
+		'mv ' + config['output_dir'] + "/CIBERSORTx_output/" + 'CIBERSORTx_' + config['sample_type'] + 
+		"_deconvolution_reference_data_inferred_phenoclasses.CIBERSORTx_" + config['sample_type'] + 
+		"_deconvolution_reference_data_inferred_refsample.bm.K999.txt " + config['output_dir'] + 
+		'/' + config['sample_type'] + '_signature_matrix.txt; ' +
+		
 		# clean up
-		'rm -r '+ config['output_dir'] + '/CIBERSORTx_output; '# +
-		#'rm ' + config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + str(config['n_cells']) + "cells_HUGO.txt" 
+		'rm -r '+ config['output_dir'] + '/CIBERSORTx_output'

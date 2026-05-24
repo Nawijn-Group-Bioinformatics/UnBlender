@@ -13,18 +13,15 @@ yield accurate results.
 <p align="center">
 <img src="./UnBlender_workflow.png" alt="The UnBlender workflow" width="550">
 </p>
-**Why is this important?** Because otherwise there is a very realistic
-risk of generating meaningless deconvolution results. For reliable
-results, it is essential to test whether the chosen combination of cell
-types *can* accurately be deconvoluted in the chosen sample type.
 
-**How does UnBlender evaluate deconvolution accuracy?** In short: by
-deconvoluting pseudo-bulk samples with a known cell type composition.
-More information can be found in [TODO].
+**Why is this important?** 
+Deconvolution analyses run a very realistic risk of generating meaningless results. For reliable cell type deconvolution, it is essential to test whether the chosen approach is feasible in the sample type.
 
-**Which sample types are available?** At the moment, UnBlender can be
-run to evaluate deconvolution strategies for nasal brush, bronchial
-brush, bronchial biopsy and parenchymal resection samples.
+**How does UnBlender evaluate accuracy?** 
+In short: by deconvoluting pseudo-bulk samples with a known cell type composition. More information can be found in [#TODO].
+
+**Which sample types are available?** 
+At the moment, UnBlender evaluates deconvolution strategies for nasal brush, bronchial brush, bronchial biopsy and parenchymal resection samples.
 
 ------------------------------------------------------------------------
 
@@ -46,7 +43,7 @@ dataset
 
 Want to use it now? A beta version of the GUI with full functionality is
 available for testers, contact us at
-[unblender.info\@gmail.com](mailto:unblender.info@gmail.com){.email} or
+[unblender.info\@gmail.com](mailto:unblender.info@gmail.com) or
 submit an issue to this repository.
 
 ------------------------------------------------------------------------
@@ -68,54 +65,46 @@ deconvolution analysis on their dataset. The signature matrix can be
 saved and shared for future analyses, and easily be incorporated into an
 existing workflow using your favourite tool.
 
-##### How to use the UnBlender CLI:
+------------------------------------------------------------------------
 
-1)  Install CIBERSORTx (docker), and activate it.
-2)  Install & activate the conda environment supplied with the code.
-3)  Configure your pipeline run using a config.yaml file (example file
-    is provided, see below for parameters)
-4)  [Download the .h5ad HLCA file
-    (core).](https://cellxgene.cziscience.com/collections/6f6d381a-7701-4781-935c-db10d30de293)
-    into the UnBlender /source folder
-5)  In your command line interface, go to the directory that contains
-    the Snakemake file.
-6)  Run the pipeline using the following command: snakemake -c1
-    --configfile [config_file_name.yaml]
+#### How to use the UnBlender CLI
 
-###### Configuration of parameters:
+To install:
+1)  [Install CIBERSORTx](https://cibersortx.stanford.edu/) (docker)
+2)  Download the UnBlender CLI code
+3)  [Download the reference data file](https://drive.google.com/file/d/1gjVPQqy2OqOOnNlytqYAm1F1gmO34Tes/view?usp=drive_link) into the `/source` directory
+4)  Install the conda environment: `conda env create -f environment.yml`
 
--   `config_filename`: the absolute path + file name to the config.yaml
-    file, e.g. `/home/user/Documents/my_deconv_analysis/config.yaml`
+To run:
+1)  Set up a .yml file to configure your analysis (see details below)
+2)  Activate the conda environment: `conda activate UnBlender`
+3) Activate the CIBERSORTx docker
+4)  ***From the `/source` directory***, run the pipeline using: `snakemake -c1
+    --configfile my_config_file.yaml`
+
+#### Configuring your analysis
+You'll need to select the relevant sample type and a set of cell type labels to deconvolute the bulk sample into. Optionally, UnBlender can be set to exclude specific genes from the analysis. This can be useful, e.g. if your phenotype of interest causes altered expression of cell-type-specific genes independently from composition changes. However, removing large numbers of genes is *not* recommended.
+
+An example file (example_config.yaml) is provided which shows how to configure the following:
+-   `config_filename`: configuration .yaml file*
 -   `sample_type`: `"parenchyma"`, `"bronchial_brush"`, `"nasal_brush"`,
     or `"bronchial_biopsy"`
--   `output_dir`: absolute path to the output directory, e.g.
-    `/home/user/Documents/my_deconv_analysis/output`
--   `DEG_file`: optional, the absolute path + file name to a file with
-    any gene names to remove from the analysis (e.g. because they are
-    differentially expressed in your data). If you don't want to use
-    this feature, give it value `"no_filter"`. It is *not* recommended
-    to remove large numbers of genes, as this will reduce deconvolution
-    accuracy. However, in specific cases it may be worthwhile to remove
-    a few. Format: .csv/.txt/.tsv file with a single gene identifier
-    (HGNC gene names) on each new line.
--   `email`: the email address with which you run CIBERSORTx
+-   `output_dir`: the output directory*
+-   `DEG_file`: `"no_filter"`, or optionally: a text file* containing genes (HGNC names, one per line) to exclude from the analysis
+-   `email`: the email address to run CIBERSORTx with
 -   `token`: your private CIBERSORTx token
--   `cell_types`: the cell types you wish to deconvolute, and which HLCA
-    annotation level they correspond to. (See "cell_type_names.tsv" file
-    for an overview of available cell types, listed per level.) Format:
-    a nested YAML list. Sometimes it is useful to merge two cell types
-    with similar gene expression profiles into one category, which is
-    possible as shown in the example below for basal and secretory
-    cells:
+-   `cell_types`: the cell types to deconvolute and matching HLCA annotation level, see below for the correct format. `cell_type_names.tsv` contains an overview of the available cell types.
 
-**Partial example cell type selection of a deconvolution setup into
-three categories:**
+\* Specify the absolute path
+
+#### Example: cell type selection
+The cell type selection to deconvolute into (`cell_types`) should be specified as a nested YAML. The following abridged example shows a deconvolution into three subsets, one of which is composed of **two** cell type labels. Merging cell types into a shared deconvolution subset can be helpful to improve deconvolution accuracy for cell types that have similar transcriptomic profiles. Note the extra dash and indentation.
 
 ``` cell_types:
   - - "ann_level_2_clean"
     - "Lymphatic EC"
 
-  - - "ann_level_3_clean"
+  - - "ann_level_3_clean" # note the extra dash and indentation:
     - - "Basal"
       - "Secretory"
 
@@ -128,20 +117,21 @@ three categories:**
 ### Citing UnBlender
 
 Have you used UnBlender (GUI or CLI) to perform a cell type
-deconvolution analysis? Please cite UnBlender as: [TODO]
+deconvolution analysis? Please cite UnBlender as: [#TODO]
 
 ### Questions?
 
-In case of questions, or if you encounter any bugs, please submit an
-issue to this repository. (Or contact
-[unblender.info\@gmail.com](mailto:unblender.info@gmail.com){.email}.
+In case of questions, please submit an
+issue to this repository. 
 
 ------------------------------------------------------------------------
 
 ###### To do:
 
-Future CLI updates may include: - User manual on the UnBlender
-workflow + tips & tricks (need) - Clean up the pipeline to simplify
-output (need) - Enable signature matrix output with ENSG gene IDs
-(want) - Generalize the pipeline for other reference datasets (want) -
-Add MuSiC deconvolution algorithm option (want)
+Future CLI updates may include: 
+
+- User manual on the UnBlender workflow + tips & tricks (need) 
+- Clean up the pipeline to simplify output (need) 
+- Enable signature matrix output with ENSG gene IDs (want) 
+- Generalize the pipeline for other reference datasets (want) 
+- Add MuSiC deconvolution algorithm option (want)

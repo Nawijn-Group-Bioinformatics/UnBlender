@@ -9,7 +9,7 @@ library(tidyr)
 library(ggpubr)
 library(dplyr)
 library(RColorBrewer)
-# library(ggrepel)
+library(ggrepel)
 library(cowplot)
 
 # Setup

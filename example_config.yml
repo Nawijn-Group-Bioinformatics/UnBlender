@@ -3,7 +3,7 @@
 # Run with: snakemake -c1 --configfile configfilename
 # from the directory that contains the Snakemake file 
 
-config_filename: "/home/user/path/to/example_config.yaml" # absolute path to file
+config_filename: "/home/user/path/to/example_config.yaml" # absolute path to this file
 sample_type: "parenchyma" # options: parenchyma, bronchial_brush, nasal_brush, bronchial_biopsy
 output_dir: "/home/user/path/to/output_dir/" # absolute path to directory
 filter_reference: 'no_filter' # options: 'no_filter' or absolute path to file
@@ -14,52 +14,52 @@ token: "48297a506d1ebd24c3caf82b95f73108" # Example, you'll need to request a to
 
 # Cell type selection to test
 cell_types:
-  - - "ann_level_3_clean"
+  - - "ann_level_3"
     - "EC arterial"
 
-  - - "ann_level_3_clean"
+  - - "ann_level_3"
     - "EC capillary"
 
-  - - "ann_level_3_clean"
+  - - "ann_level_3"
     - "EC venous"
 
-  - - "ann_level_2_clean"
+  - - "ann_level_2"
     - "Lymphatic EC"
 
-  - - "ann_level_3_clean"
+  - - "ann_level_3"
     - - "Basal"
       - "Secretory"
 
-  - - "ann_level_3_clean"
+  - - "ann_level_3"
     - "Multiciliated lineage"
 
-  - - "ann_level_3_clean"
+  - - "ann_level_3"
     - "AT2"
 
-  - - "ann_level_3_clean"
+  - - "ann_level_3"
     - "B cell lineage"
 
-  - - "ann_level_3_clean"
+  - - "ann_level_3"
     - - "Innate lymphoid cell NK"
       - "T cell lineage"
 
-  - - "ann_level_3_clean"
+  - - "ann_level_3"
     - "Dendritic cells"
 
-  - - "ann_level_4_clean"
+  - - "ann_level_4"
     - "Alveolar macrophages"
 
-  - - "ann_level_4_clean"
+  - - "ann_level_4"
     - "Interstitial macrophages"
 
-  - - "ann_level_2_clean"
+  - - "ann_level_2"
     - "Fibroblast lineage"
 
-  - - "ann_level_2_clean"
+  - - "ann_level_2"
     - "Smooth muscle"
 
-  - - "ann_level_3_clean"
+  - - "ann_level_3"
     - "Mast cells"
 
-  - - "ann_level_3_clean"
+  - - "ann_level_3"
     - "Monocytes"
