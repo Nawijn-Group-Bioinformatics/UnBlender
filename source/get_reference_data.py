@@ -151,8 +151,8 @@ adata = adata_subsampled
 
     
 # write scRNA-seq counts matrix with cols = samples and rows = genes
-counts_layer = pd.DataFrame(adata.layers['counts'].todense(), index=adata.to_df().index, 
-                            columns=adata.to_df().columns)    
+counts_layer = pd.DataFrame(adata.layers['counts'].todense(), index=adata.obs.index, 
+                            columns=adata.var.index)    
 
 counts_layer = counts_layer.transpose()
 
@@ -173,7 +173,7 @@ counts_withInfo.to_csv(output_path + "/" + sample_type + "_subsampled_matrix_max
 adata = adata_subsampled
         
 # write scRNA-seq counts matrix with cols = samples and rows = genes
-counts_layer = pd.DataFrame(adata.layers['counts'].todense(), index=adata.to_df().index, 
+counts_layer = pd.DataFrame(adata.layers['counts'].todense(), index=adata.obs.index, 
                             columns=adata.var['gene_ids'])    
 counts_layer = counts_layer.transpose()
 
