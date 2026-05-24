@@ -1,14 +1,7 @@
-# UnBlender: reliable cell type deconvolution
+# UnBlender: Reliable Cell Type Deconvolution
 
-UnBlender allows respiratory scientists to perform cell type
-deconvolution with a custom, validated approach. Not all cell type
-deconvolution analyses will yield reliable results, especially when
-using highly granular (i.e. high resolution, very specific) cell type
-labels. UnBlender leverages the Human Lung Cell Atlas [(Sikkema et al.,
-2023)](https://www.nature.com/articles/s41591-023-02327-2) to perform
-deconvolution into a cell type label granularity that suits the need of
-a research question, and validates whether that approach is able to
-yield accurate results.
+UnBlender allows respiratory scientists to perform cell type deconvolution with a custom, validated approach. Not all cell type deconvolution analyses yield reliable results, especially when using highly granular (i.e. high resolution, very specific) cell type labels. UnBlender leverages the Human Lung Cell Atlas [(Sikkema et al., 2023)](https://www.nature.com/articles/s41591-023-02327-2) to deconvolute transcriptomics data into cell type subsets tailored to a research question, and validates whether that approach is able to yield accurate results:
+
 
 <p align="center">
 <img src="./UnBlender_workflow.png" alt="The UnBlender workflow" width="550">
@@ -121,8 +114,7 @@ deconvolution analysis? Please cite UnBlender as: [#TODO]
 
 ### Questions?
 
-In case of questions, please submit an
-issue to this repository. 
+In case of questions, please submit an issue to this repository. 
 
 ------------------------------------------------------------------------
 
