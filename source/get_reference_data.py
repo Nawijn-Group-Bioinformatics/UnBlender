@@ -144,14 +144,14 @@ else:
 
 print('subsampling done')
 
-# Extract & write the reference data with HUGO or ENSG IDs # TODO combine the two code blocks, put if/else inside? --> shorter
+# Extract & write the reference data with HUGO or ENSG IDs # TODO combine the two code blocks
 
 # Write for HUGO
 adata = adata_subsampled
 
     
 # write scRNA-seq counts matrix with cols = samples and rows = genes
-counts_layer = pd.DataFrame(adata.layers['counts'].todense(), index=adata.obs.index, 
+counts_layer = pd.DataFrame(adata.X.todense(), index=adata.obs.index, 
                             columns=adata.var.index)    
 
 counts_layer = counts_layer.transpose()
@@ -173,7 +173,7 @@ counts_withInfo.to_csv(output_path + "/" + sample_type + "_subsampled_matrix_max
 adata = adata_subsampled
         
 # write scRNA-seq counts matrix with cols = samples and rows = genes
-counts_layer = pd.DataFrame(adata.layers['counts'].todense(), index=adata.obs.index, 
+counts_layer = pd.DataFrame(adata.X.todense(), index=adata.obs.index, 
                             columns=adata.var['gene_ids'])    
 counts_layer = counts_layer.transpose()
 

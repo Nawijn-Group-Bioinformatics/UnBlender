@@ -3,17 +3,19 @@
 # Run with: snakemake -c1 --configfile configfilename
 # from the directory that contains the Snakemake file 
 
-config_filename: "/home/user/path/to/example_config.yaml" # absolute path to this file
-sample_type: "parenchyma" # options: parenchyma, bronchial_brush, nasal_brush, bronchial_biopsy
+# Locations
+config_filename: "/home/user/path/to/example_config.yml" # absolute path to this file
 output_dir: "/home/user/path/to/output_dir/" # absolute path to directory
-filter_reference: 'no_filter' # options: 'no_filter' or absolute path to file
 
-# Docker details
+# Docker credentials
 email: "my.email.address@example.com" # The email address that matches your CIBERSORTx token
 token: "48297a506d1ebd24c3caf82b95f73108" # Example, you'll need to request a token for your own use!
 
-# Cell type selection to test
-cell_types:
+# Analysis parameters
+sample_type: "parenchyma" # options: parenchyma, bronchial_brush, nasal_brush, bronchial_biopsy
+filter_reference: 'no_filter' # options: 'no_filter' or absolute path to file
+
+cell_types: # Cell type selection to deconvolute into
   - - "ann_level_3"
     - "EC arterial"
 

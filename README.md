@@ -83,7 +83,7 @@ An example file (example_config.yaml) is provided which shows how to configure t
 -   `sample_type`: `"parenchyma"`, `"bronchial_brush"`, `"nasal_brush"`,
     or `"bronchial_biopsy"`
 -   `output_dir`: the output directory*
--   `DEG_file`: `"no_filter"`, or optionally: a text file* containing genes (HGNC names, one per line) to exclude from the analysis
+-   `filter_reference`: `"no_filter"`, or optionally: a text file* containing genes (HGNC names, one per line) to exclude from the analysis
 -   `email`: the email address to run CIBERSORTx with
 -   `token`: your private CIBERSORTx token
 -   `cell_types`: the cell types to deconvolute and matching HLCA annotation level, see below for the correct format. `cell_type_names.tsv` contains an overview of the available cell types.

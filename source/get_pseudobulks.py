@@ -70,7 +70,7 @@ def pseudobulk(adata, groupby):
         bool_mask = adata.obs['pseudobulk_sample'] == label # boolean mask for cells of pseudobulk sample
 
 
-        subset_counts = adata.layers['counts'][bool_mask,] # subset count matrix for pseudobulk sample
+        subset_counts = adata.X[bool_mask,] # subset count matrix for pseudobulk sample
 
         # sum values over all cells in 'sample' for each feature:
         subset_pseudobulk = pd.DataFrame(subset_counts.sum(axis=0).transpose(), columns=[label])

@@ -5,7 +5,7 @@
 # TODO: ENSG gene ID option (currently only outputs ENSG ref data file)
 
 
-# Deprecated parameter options (TODO: clean up instead of hard coding)
+# Deprecated parameter options
 config['n_cells'] = 300
 config['gene_IDs'] = "HUGO" # HUGO or ENSG
 config['correct_for_expression_levels'] ='correct_false' # correct_true or correct_false
@@ -14,7 +14,7 @@ config['HLCA_file'] = 'UnBlender_reference_file_HLCA.h5ad'
 
 # Remove trailing slash of output dir if present
 if config['output_dir'].endswith('/'):
-    config['output_dir'] = config['output_dir'][:-1]
+	config['output_dir'] = config['output_dir'][:-1]
 
 
 rule all:
