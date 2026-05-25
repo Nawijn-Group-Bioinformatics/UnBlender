@@ -1,25 +1,33 @@
-# Get pseudobulks for testing the signature matrix.
+### About this script ###
+# Get pseudobulk samples and their ground truth composition
+# to evaluate the signature matrix.
 
 # command line arguments: sample_type config_yml path/to/HLCA_file output_path/
 
+print('### Generating pseudobulk samples')
 
+### Load libraries
 import numpy as np
 import pandas as pd
 import scanpy as sc
 import yaml
 import sys
 import random as rdm
+import warnings
 
-# Set up, load HLCA data
-sample_type = sys.argv[1] # tissue = "parenchyma"
-if sample_type == "IPF_DEG_analysis": # specifically to run the disease DEG removal analysis:  # TODO: remove IPF pseudobulks from public version of code
-    adata = sc.read("HLCA_full_v1.1_hasCountsLayer_colsRenamed.h5ad") # going to hard code the separate pseudobulk source file (extended HLCA) 
-else:
-    adata = sc.read(sys.argv[3]) # sc.read("../HLCA_v1.1_20220725.h5ad") 
-output_path = sys.argv[4] #"../pseudobulk_analysis/"
+### Set up & load HLCA data
+sample_type = sys.argv[1]
+output_path = sys.argv[4]
 config_yml = sys.argv[2]
+print("loading data")
+adata = sc.read(sys.argv[3])
 
-# Load cell type selection directly from config file
+# Suppress FutureWarnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
+
+### Load cell type selection from config file
+print('loading cell type selection')
 with open(config_yml, "r") as stream:
 	try:
 		temp = yaml.safe_load(stream)
@@ -29,7 +37,7 @@ with open(config_yml, "r") as stream:
 		print(exc)
 
 
-# Function: counts per cell type as ground truth
+### Function: get number of cells per cell type per sample (ground truth)
 def write_count_file(adata, outfile, include_cell_types):
     
     samples = adata.obs['sample'].unique()
@@ -48,12 +56,12 @@ def write_count_file(adata, outfile, include_cell_types):
                     f.write(s + ',' + ' & '.join(i[1]) + ',' + str(nr) + '\n')
 
 
-# Function: aggregate pseudobulk samples
+### Function: aggregate pseudobulk samples
 def pseudobulk(adata, groupby):
     
     # groupby is a list of names of adata.obs columns used to split cells into pseudobulk samples
-    # e.g. groupby = ['donor', 'celltype'] --> each pseudobulk 'sample' is the aggregation of a given celltype 
-    # for a given donor
+    # e.g. groupby = ['donor', 'celltype'] --> each pseudobulk 'sample' is the aggregation of 
+    # a given celltype for a given donor.
     
     # add metadata column for pseudobulk 'sample'
     first_col = True
@@ -89,7 +97,8 @@ def pseudobulk(adata, groupby):
     return pseudobulk_matrix
 
 
-# Identify samples to be used
+### Identify samples to be used
+print("selecting pseudobulk samples")
 if sample_type == "parenchyma":
 	adata = adata[adata.obs['anatomical_region_coarse'] == 'parenchyma']
 	rdm.seed(0)
@@ -113,17 +122,11 @@ elif sample_type == "bronchial_brush":
 	adata = adata[adata.obs['anatomical_region_coarse'] == "Distal Bronchi"]
 	samples_to_include = adata.obs.groupby(['sample']).size().index # using all of them
 
-elif sample_type == "IPF_DEG_analysis": # specifically to run the disease DEG removal analysis
-    adata = adata[adata.obs['disease'] == 'pulmonary fibrosis']
-    adata = adata[adata.obs['study'] == 'Banovich_Kropski_2020']
-    # get samples with >2000 UMIs (this leaves me 9 samples instead of 7 if it's >2500, and that was a very arbitrary cut-off anyway)
-    samples_to_include = adata.obs.groupby(['sample']).size().index[adata.obs.groupby(['sample']).size() > 2000]
-
 else:
 	sys.exit("ERROR: sample_type not valid: " + sample_type)
 
 
-# Subset HLCA to those samples 
+### Subset HLCA to those samples 
 adata = adata[adata.obs['sample'].isin(samples_to_include)]
 
 # Add the custom_label annotation for selected cell types
@@ -149,9 +152,13 @@ for item in include_cell_types:
 adata = adata_subs
 
 
+### Generate the data files: ground truth + pseudobulks
 # Get counts per cell type
+print("generating ground truth data")
 write_count_file(adata, output_path + '/cell_counts.csv', include_cell_types)
 
-# Make pseudobulks
+# Make pseudobulks and save
+print("generating pseudobulk samples")
 pseudobulks = pseudobulk(adata, ['sample'])
 pseudobulks.to_csv(output_path + '/pseudobulks.csv', sep='\t')
+print('\n')

@@ -72,8 +72,7 @@ To run:
 1)  Set up a .yml file to configure your analysis (see details below)
 2)  Activate the conda environment: `conda activate UnBlender`
 3) Activate the CIBERSORTx docker
-4)  ***From the `/source` directory***, run the pipeline using: `snakemake -c1
-    --configfile my_config_file.yaml`
+4)  ***From the `/source` directory***, run the pipeline using: `snakemake -c1 -q --configfile my_config_file.yaml`
 
 #### Configuring your analysis
 You'll need to select the relevant sample type and a set of cell type labels to deconvolute the bulk sample into. Optionally, UnBlender can be set to exclude specific genes from the analysis. This can be useful, e.g. if your phenotype of interest causes altered expression of cell-type-specific genes independently from composition changes. However, removing large numbers of genes is *not* recommended.

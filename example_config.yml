@@ -1,23 +1,21 @@
 # Example config file for UnBlender pipeline
 
-# Run with: snakemake -c1 --configfile configfilename
-# from the directory that contains the Snakemake file 
+# Run with cmd: snakemake -c1 --configfile configfilename
+# Run from the /source directory, which contains the Snakemake file 
 
-# Locations
-config_filename: "/home/user/path/to/example_config.yml" # absolute path to this file
-output_dir: "/home/user/path/to/output_dir/" # absolute path to directory
-
-# Docker credentials
-email: "my.email.address@example.com" # The email address that matches your CIBERSORTx token
-token: "48297a506d1ebd24c3caf82b95f73108" # Example, you'll need to request a token for your own use!
-
-# Analysis parameters
+config_filename: "/home/user/path/to/example_config.yaml" # absolute path to this file
 sample_type: "parenchyma" # options: parenchyma, bronchial_brush, nasal_brush, bronchial_biopsy
+output_dir: "/home/user/path/to/output_dir/" # absolute path to directory
 filter_reference: 'no_filter' # options: 'no_filter' or absolute path to file
 
-cell_types: # Cell type selection to deconvolute into
-  - - "ann_level_3"
-    - "EC arterial"
+# Docker details
+email: "my.email.address@example.com" # The email address that matches your CIBERSORTx token
+token: "48297a506d1ebd24c3caf82b95f73108" # Example, you'll need to request a token for your own use
+
+# Cell type selection to test
+cell_types:
+  - - "ann_level_3" # the cell type annotation level in the provided HLCA object
+    - "EC arterial" # the cell type label
 
   - - "ann_level_3"
     - "EC capillary"
@@ -28,7 +26,7 @@ cell_types: # Cell type selection to deconvolute into
   - - "ann_level_2"
     - "Lymphatic EC"
 
-  - - "ann_level_3"
+  - - "ann_level_3" # note the added indentation/extra dashes when merging labels into one sets:
     - - "Basal"
       - "Secretory"
 
@@ -41,7 +39,7 @@ cell_types: # Cell type selection to deconvolute into
   - - "ann_level_3"
     - "B cell lineage"
 
-  - - "ann_level_3"
+  - - "ann_level_3" # again: added indentation/extra dashes to merge
     - - "Innate lymphoid cell NK"
       - "T cell lineage"
 
