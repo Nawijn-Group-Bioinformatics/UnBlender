@@ -122,7 +122,6 @@ In case of questions, please submit an issue to this repository.
 Future CLI updates may include: 
 
 - User manual on the UnBlender workflow + tips & tricks (need) 
-- Clean up the pipeline to simplify output (need) 
 - Enable signature matrix output with ENSG gene IDs (want) 
 - Generalize the pipeline for other reference datasets (want) 
 - Add MuSiC deconvolution algorithm option (want)
