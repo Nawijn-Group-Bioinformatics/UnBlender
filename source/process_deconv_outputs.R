@@ -39,8 +39,7 @@ if (args[4] == 'correct_true') {
 ref_counts_file = args[5]
 sigmat_file = args[6]
 
-# Note to self: MARK1
-
+# Note to self: MARK2
 
 ############# Read in estimated and ground truth proportions ###############
 cat("reading deconvolution estimates and ground truth\n")
@@ -69,7 +68,8 @@ for (s in unique(gtruth$sample)) {
 deconv <- read.table(deconv_results_file, sep = "\t", header = T, row.names = 1)
 num_columns = length(colnames(deconv)) -3 # columns to include in pivot longer
 deconv$sample = rownames(deconv)
-deconv_plottable <- pivot_longer(deconv, 1:num_columns, names_to = "custom_labels", values_to = "sample_proportions")
+deconv_plottable <- pivot_longer(deconv, cols = all_of(names(deconv)[1:num_columns]), 
+                                 names_to = "custom_labels", values_to = "sample_proportions")
 
 
 ### Match cell type labels to ground truth file formatting
@@ -139,7 +139,8 @@ for (celltp in unique(df_to_plot$custom_labels)) {
   # test for correlations
   corr_test <- cor.test(corr_df$sample_proportions.x, corr_df$sample_proportions.y)
   
-  res <- data.frame(celltp, corr_test$estimate, corr_test$p.value, mean(corr_df$sample_proportions.x), sd(corr_df$sample_proportions.x))
+  res <- data.frame(celltp, corr_test$estimate, corr_test$p.value, 
+                    mean(corr_df$sample_proportions.x), sd(corr_df$sample_proportions.x))
   df_corr_results <- rbind(df_corr_results, res)
 }
 
@@ -207,7 +208,6 @@ gt_vs_est_plot <- ggplot(prop_error_df, aes(x=sample_proportions.x, y=sample_pro
   geom_point() + facet_wrap(~custom_labels.x, scales='free') +
   xlab("Ground truth: true sample proportions") + ylab("Deconvolution: estimated proportions") +
   ggtitle("True vs. estimated proportions (green line indicates values where estimated = true)")
-gt_vs_est_plot
 
 
 ### Put MAPE and correlation plots together
@@ -232,5 +232,6 @@ output_report = merge(MAPE_cell_type, df_corr_results, by.x='cell.type', by.y='c
 colnames(output_report) = c('Cell type', 'MAPE', 'Correlation', 'Corr. p-value', 'Mean pseudobulk proportion', 'Stdev. pseudobulk proportions')
 write.table(output_report, sep=',', file = paste0(output_dir, '/deconvolution_accuracy_report.csv'), row.names = F)
 
-cat('DONE\n')
 # Note to self: MARK2
+
+cat('DONE\n')
