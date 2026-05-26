@@ -1,0 +1,11 @@
+# Installer Scripts README
+This folder contains **optional** installer scripts for setting up the dashboard quickly and easily.
+
+The provided scripts download the dashboard and install all required dependencies for the dashboard to run.
+
+## Usage
+To work correctly, these installer scripts must be placed in the same directory as the installR_scripts folder. These scripts do **not** need to be inside the repository. They will download all required files automatically. The download and usage guide of these scripts can be found underneath the [releases](https://github.com/jrdalenberg/UnBlender/releases/tag/v0.1) of the [repository](https://github.com/jrdalenberg/UnBlender).
+
+## Available Installers
+* **Windows**: <br> Scripts are located in the Windows folder.
+* **macOS:** <br> Scripts are located in the MacOS folder.

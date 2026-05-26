@@ -1,0 +1,212 @@
+arc	sample_type	level1	level2	level3	level4
+parenchyma	donor_lung	Immune	Myeloid	Macrophages	Alveolar macrophages
+parenchyma	donor_lung	Endothelial	Blood vessels	EC venous	EC venous pulmonary
+parenchyma	donor_lung	Endothelial	Lymphatic EC	Lymphatic EC differentiating	Lymphatic EC differentiating
+parenchyma	donor_lung	Epithelial	Alveolar epithelium	AT2	AT2
+parenchyma	donor_lung	Immune	Lymphoid	Innate lymphoid cell NK	NK cells
+parenchyma	surgical_resection	Stroma	Fibroblast lineage	Fibroblasts	Pericytes
+nose	scraping	Epithelial	Airway epithelium	Secretory	Club
+parenchyma	surgical_resection	Immune	Myeloid	Mast cells	Mast cells
+parenchyma	donor_lung	Immune	Myeloid	Monocytes	Classical monocytes
+airway	donor_lung	Epithelial	Airway epithelium	Basal	Suprabasal
+parenchyma	surgical_resection	Immune	Lymphoid	Innate lymphoid cell NK	NK cells
+nose	scraping	Epithelial	Airway epithelium	Secretory	Goblet
+airway	biopsy	Epithelial	Airway epithelium	Basal	Suprabasal
+Distal Bronchi	brush	Immune	Lymphoid	B cell lineage	B cells
+parenchyma	donor_lung	Immune	Lymphoid	T cell lineage	CD4 T cells
+Distal Bronchi	brush	Epithelial	Airway epithelium	Secretory	Club
+parenchyma	donor_lung	Stroma	Fibroblast lineage	Fibroblasts	Adventitial fibroblasts
+Trachea	biopsy	Epithelial	Airway epithelium	Basal	Basal resting
+Inferior turbinate	biopsy	Epithelial	Airway epithelium	Basal	Hillock-like
+parenchyma	surgical_resection	Immune	Lymphoid	T cell lineage	CD8 T cells
+parenchyma	surgical_resection	Immune	Myeloid	Macrophages	Alveolar macrophages
+nose	brush	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+airway	donor_lung	Epithelial	Airway epithelium	Basal	Basal resting
+nose	brush	Epithelial	Airway epithelium	Secretory	Club
+Inferior turbinate	brush	Epithelial	Airway epithelium	Secretory	Club
+airway	donor_lung	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+airway	biopsy	Immune	Lymphoid	T cell lineage	CD8 T cells
+parenchyma	donor_lung	Immune	Myeloid	Dendritic cells	DC2
+parenchyma	donor_lung	Epithelial	Airway epithelium	Secretory	Transitional Club-AT2
+Trachea	biopsy	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+parenchyma	donor_lung	Epithelial	Alveolar epithelium	AT1	AT1
+Distal Bronchi	brush	Epithelial	Airway epithelium	Basal	Basal resting
+parenchyma	donor_lung	Immune	Myeloid	Macrophages	Interstitial macrophages
+nose	brush	Epithelial	Airway epithelium	Secretory	Goblet
+parenchyma	donor_lung	Immune	Myeloid	Monocytes	Non-classical monocytes
+airway	biopsy	Immune	Lymphoid	T cell lineage	CD4 T cells
+airway	donor_lung	Stroma	Fibroblast lineage	Fibroblasts	Adventitial fibroblasts
+airway	biopsy	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+parenchyma	donor_lung	Stroma	Fibroblast lineage	Fibroblasts	Alveolar fibroblasts
+parenchyma	donor_lung	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+airway	surgical_resection	Epithelial	Airway epithelium	Secretory	Transitional Club-AT2
+parenchyma	surgical_resection	Epithelial	Alveolar epithelium	AT2	AT2
+parenchyma	surgical_resection	Endothelial	Blood vessels	EC capillary	EC aerocyte capillary
+parenchyma	surgical_resection	Endothelial	Blood vessels	EC capillary	EC general capillary
+parenchyma	donor_lung	Immune	Lymphoid	T cell lineage	CD8 T cells
+Intermediate Bronchi	biopsy	Epithelial	Airway epithelium	Basal	Basal resting
+parenchyma	donor_lung	Endothelial	Blood vessels	EC arterial	EC arterial
+Inferior turbinate	brush	Epithelial	Airway epithelium	Secretory	Goblet
+Intermediate Bronchi	biopsy	Endothelial	Blood vessels	EC venous	EC venous systemic
+Trachea	biopsy	Epithelial	Submucosal Gland	Submucosal Secretory	SMG serous
+parenchyma	surgical_resection	Endothelial	Blood vessels	EC venous	EC venous pulmonary
+airway	biopsy	Immune	Myeloid	Dendritic cells	DC2
+airway	surgical_resection	Immune	Lymphoid	Innate lymphoid cell NK	NK cells
+airway	donor_lung	Epithelial	Airway epithelium	Secretory	Goblet
+airway	surgical_resection	Endothelial	Blood vessels	EC arterial	EC arterial
+parenchyma	donor_lung	Endothelial	Blood vessels	EC capillary	EC general capillary
+Distal Bronchi	brush	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+airway	donor_lung	Epithelial	Submucosal Gland	Submucosal Secretory	SMG duct
+airway	surgical_resection	Endothelial	Blood vessels	EC venous	EC venous pulmonary
+nose	scraping	Immune	Myeloid	Dendritic cells	DC2
+Distal Bronchi	brush	Epithelial	Airway epithelium	Rare	Ionocyte
+parenchyma	donor_lung	Immune	Myeloid	Mast cells	Mast cells
+airway	biopsy	Stroma	Fibroblast lineage	Fibroblasts	Peribronchial fibroblasts
+parenchyma	surgical_resection	Immune	Lymphoid	B cell lineage	Plasma cells
+nose	scraping	Immune	Myeloid	Mast cells	Mast cells
+airway	biopsy	Epithelial	Airway epithelium	Basal	Basal resting
+airway	surgical_resection	Epithelial	Alveolar epithelium	AT2	AT2
+Trachea	biopsy	Endothelial	Blood vessels	EC arterial	EC arterial
+parenchyma	surgical_resection	Immune	Myeloid	Monocytes	Classical monocytes
+airway	biopsy	Epithelial	Airway epithelium	Secretory	Club
+Inferior turbinate	biopsy	Epithelial	Airway epithelium	Secretory	Goblet
+nose	scraping	Immune	Lymphoid	T cell lineage	CD8 T cells
+airway	donor_lung	Immune	Lymphoid	B cell lineage	B cells
+parenchyma	surgical_resection	Immune	Lymphoid	T cell lineage	CD4 T cells
+Trachea	biopsy	Epithelial	Airway epithelium	Secretory	Club
+nose	scraping	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+airway	surgical_resection	Immune	Myeloid	Macrophages	Alveolar macrophages
+airway	donor_lung	Immune	Myeloid	Macrophages	Interstitial macrophages
+airway	donor_lung	Epithelial	Airway epithelium	Secretory	Club
+airway	biopsy	Immune	Lymphoid	B cell lineage	B cells
+airway	surgical_resection	Endothelial	Lymphatic EC	Lymphatic EC mature	Lymphatic EC mature
+parenchyma	surgical_resection	Endothelial	Blood vessels	EC arterial	EC arterial
+Inferior turbinate	brush	Epithelial	Airway epithelium	Basal	Hillock-like
+parenchyma	donor_lung	Stroma	Fibroblast lineage	Fibroblasts	Pericytes
+airway	donor_lung	Immune	Myeloid	Monocytes	Classical monocytes
+airway	surgical_resection	Endothelial	Blood vessels	EC capillary	EC general capillary
+parenchyma	surgical_resection	Stroma	Smooth muscle	Smooth muscle	Smooth muscle
+parenchyma	donor_lung	Endothelial	Lymphatic EC	Lymphatic EC mature	Lymphatic EC mature
+parenchyma	donor_lung	Immune	Lymphoid	B cell lineage	Plasma cells
+parenchyma	donor_lung	Endothelial	Blood vessels	EC capillary	EC aerocyte capillary
+airway	biopsy	Endothelial	Blood vessels	EC venous	EC venous systemic
+airway	biopsy	Immune	Lymphoid	B cell lineage	Plasma cells
+nose	scraping	Immune	Lymphoid	B cell lineage	B cells
+airway	surgical_resection	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+airway	surgical_resection	Stroma	Fibroblast lineage	Fibroblasts	Alveolar fibroblasts
+airway	surgical_resection	Stroma	Fibroblast lineage	Fibroblasts	Pericytes
+airway	surgical_resection	Immune	Myeloid	Macrophages	Interstitial macrophages
+parenchyma	donor_lung	Endothelial	Blood vessels	EC venous	EC venous systemic
+nose	scraping	Epithelial	Airway epithelium	Basal	Hillock-like
+airway	biopsy	Epithelial	Airway epithelium	Secretory	Goblet
+parenchyma	surgical_resection	Immune	Myeloid	Monocytes	Non-classical monocytes
+airway	donor_lung	Epithelial	Airway epithelium	Multiciliated lineage	Deuterosomal
+airway	biopsy	Epithelial	Airway epithelium	Multiciliated lineage	Deuterosomal
+airway	surgical_resection	Endothelial	Blood vessels	EC capillary	EC aerocyte capillary
+nose	scraping	Immune	Lymphoid	Innate lymphoid cell NK	NK cells
+airway	donor_lung	Epithelial	Airway epithelium	Basal	Hillock-like
+Distal Bronchi	brush	Epithelial	Airway epithelium	Secretory	Goblet
+Intermediate Bronchi	biopsy	Epithelial	Airway epithelium	Secretory	Club
+Inferior turbinate	biopsy	Epithelial	Submucosal Gland	Submucosal Secretory	SMG serous
+Trachea	biopsy	Endothelial	Blood vessels	EC venous	EC venous systemic
+Trachea	biopsy	Epithelial	Airway epithelium	Basal	Suprabasal
+parenchyma	donor_lung	Immune	Lymphoid	B cell lineage	B cells
+Distal Bronchi	brush	Immune	Myeloid	Macrophages	Alveolar macrophages
+airway	donor_lung	Immune	Myeloid	Monocytes	Non-classical monocytes
+parenchyma	donor_lung	Stroma	Smooth muscle	Smooth muscle	Smooth muscle
+Intermediate Bronchi	biopsy	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+Inferior turbinate	brush	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+parenchyma	donor_lung	Epithelial	Airway epithelium	Secretory	Club
+Intermediate Bronchi	biopsy	Epithelial	Airway epithelium	Basal	Suprabasal
+airway	biopsy	Immune	Lymphoid	Innate lymphoid cell NK	NK cells
+parenchyma	surgical_resection	Stroma	Fibroblast lineage	Fibroblasts	Alveolar fibroblasts
+Inferior turbinate	biopsy	Epithelial	Airway epithelium	Secretory	Club
+parenchyma	surgical_resection	Immune	Myeloid	Dendritic cells	DC1
+airway	surgical_resection	Immune	Myeloid	Mast cells	Mast cells
+Inferior turbinate	brush	Immune	Lymphoid	T cell lineage	CD8 T cells
+nose	brush	Epithelial	Airway epithelium	Basal	Suprabasal
+airway	surgical_resection	Epithelial	Airway epithelium	Basal	Suprabasal
+Distal Bronchi	brush	Epithelial	Airway epithelium	Multiciliated lineage	Deuterosomal
+parenchyma	donor_lung	Stroma	Fibroblast lineage	Fibroblasts	Subpleural fibroblasts
+Intermediate Bronchi	biopsy	Immune	Myeloid	Dendritic cells	DC2
+parenchyma	donor_lung	Stroma	Fibroblast lineage	Fibroblasts	Peribronchial fibroblasts
+parenchyma	donor_lung	Stroma	Smooth muscle	SM activated stress response	SM activated stress response
+nose	scraping	Immune	Lymphoid	T cell lineage	CD4 T cells
+parenchyma	donor_lung	Immune	Lymphoid	T cell lineage	T cells proliferating
+airway	donor_lung	Epithelial	Airway epithelium	Rare	Neuroendocrine
+airway	biopsy	Immune	Myeloid	Monocytes	Classical monocytes
+nose	scraping	Immune	Myeloid	Monocytes	Classical monocytes
+airway	surgical_resection	Immune	Lymphoid	T cell lineage	CD4 T cells
+airway	donor_lung	Immune	Lymphoid	T cell lineage	CD4 T cells
+Intermediate Bronchi	biopsy	Epithelial	Submucosal Gland	Submucosal Secretory	SMG mucous
+airway	biopsy	Immune	Myeloid	Macrophages	Interstitial macrophages
+airway	biopsy	Epithelial	Airway epithelium	Rare	Ionocyte
+airway	biopsy	Stroma	Fibroblast lineage	Fibroblasts	Adventitial fibroblasts
+parenchyma	surgical_resection	Epithelial	Airway epithelium	Secretory	Transitional Club-AT2
+airway	surgical_resection	Immune	Lymphoid	B cell lineage	B cells
+airway	biopsy	Endothelial	Blood vessels	EC venous	EC venous pulmonary
+airway	donor_lung	Epithelial	Submucosal Gland	Submucosal Secretory	SMG serous
+parenchyma	surgical_resection	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+Distal Bronchi	brush	Epithelial	Airway epithelium	Basal	Suprabasal
+airway	surgical_resection	Immune	Lymphoid	T cell lineage	CD8 T cells
+Inferior turbinate	biopsy	Endothelial	Blood vessels	EC venous	EC venous systemic
+Intermediate Bronchi	biopsy	Epithelial	Submucosal Gland	Submucosal Secretory	SMG serous
+airway	surgical_resection	Epithelial	Alveolar epithelium	AT1	AT1
+nose	brush	Immune	Lymphoid	T cell lineage	CD8 T cells
+Distal Bronchi	brush	Immune	Lymphoid	T cell lineage	CD4 T cells
+airway	surgical_resection	Immune	Myeloid	Monocytes	Classical monocytes
+nose	scraping	Epithelial	Airway epithelium	Multiciliated lineage	Deuterosomal
+parenchyma	donor_lung	Immune	Myeloid	Dendritic cells	Migratory DCs
+parenchyma	surgical_resection	Immune	Myeloid	Macrophages	Interstitial macrophages
+Trachea	biopsy	Epithelial	Airway epithelium	Secretory	Transitional Club-AT2
+Distal Bronchi	brush	Immune	Myeloid	Dendritic cells	DC2
+airway	biopsy	Immune	Myeloid	Mast cells	Mast cells
+parenchyma	donor_lung	Stroma	Fibroblast lineage	Myofibroblasts	Myofibroblasts
+Inferior turbinate	biopsy	Epithelial	Airway epithelium	Basal	Basal resting
+parenchyma	donor_lung	Immune	Myeloid	Dendritic cells	Plasmacytoid DCs
+parenchyma	donor_lung	Epithelial	Alveolar epithelium	AT2	AT2 proliferating
+airway	biopsy	Stroma	Smooth muscle	Smooth muscle	Smooth muscle
+parenchyma	surgical_resection	Epithelial	Alveolar epithelium	AT1	AT1
+Trachea	biopsy	Epithelial	Submucosal Gland	Submucosal Secretory	SMG duct
+Intermediate Bronchi	biopsy	Stroma	Smooth muscle	Fibromyocytes	Fibromyocytes
+Inferior turbinate	biopsy	Epithelial	Airway epithelium	Basal	Suprabasal
+parenchyma	surgical_resection	Stroma	Fibroblast lineage	Fibroblasts	Adventitial fibroblasts
+Trachea	biopsy	Immune	Myeloid	Dendritic cells	DC2
+parenchyma	donor_lung	Epithelial	Airway epithelium	Basal	Suprabasal
+Inferior turbinate	biopsy	Epithelial	Airway epithelium	Multiciliated lineage	Multiciliated
+parenchyma	surgical_resection	Immune	Myeloid	Dendritic cells	DC2
+airway	surgical_resection	Stroma	Smooth muscle	Smooth muscle	Smooth muscle
+nose	brush	Epithelial	Submucosal Gland	Submucosal Secretory	SMG duct
+nose	brush	Immune	Myeloid	Mast cells	Mast cells
+Distal Bronchi	brush	Immune	Myeloid	Mast cells	Mast cells
+Trachea	biopsy	Epithelial	Submucosal Gland	Submucosal Secretory	SMG mucous
+Inferior turbinate	biopsy	Epithelial	Submucosal Gland	Submucosal Secretory	SMG duct
+airway	biopsy	Epithelial	Submucosal Gland	Submucosal Secretory	SMG serous
+nose	scraping	Immune	Myeloid	Dendritic cells	Plasmacytoid DCs
+airway	donor_lung	Epithelial	Airway epithelium	Rare	Ionocyte
+Inferior turbinate	brush	Immune	Lymphoid	T cell lineage	CD4 T cells
+nose	scraping	Epithelial	Airway epithelium	Rare	Ionocyte
+airway	donor_lung	Immune	Myeloid	Dendritic cells	DC2
+airway	biopsy	Endothelial	Blood vessels	EC arterial	EC arterial
+parenchyma	surgical_resection	Endothelial	Blood vessels	EC venous	EC venous systemic
+nose	brush	Epithelial	Airway epithelium	Basal	Basal resting
+parenchyma	donor_lung	Epithelial	Airway epithelium	Secretory	Goblet
+airway	biopsy	Endothelial	Blood vessels	EC capillary	EC general capillary
+Inferior turbinate	brush	Immune	Myeloid	Dendritic cells	DC2
+airway	biopsy	Epithelial	Submucosal Gland	Submucosal Secretory	SMG duct
+Trachea	biopsy	Immune	Myeloid	Dendritic cells	Plasmacytoid DCs
+nose	scraping	Epithelial	Airway epithelium	Basal	Suprabasal
+parenchyma	surgical_resection	Immune	Myeloid	Dendritic cells	Plasmacytoid DCs
+parenchyma	surgical_resection	Endothelial	Lymphatic EC	Lymphatic EC mature	Lymphatic EC mature
+nose	brush	Immune	Myeloid	Dendritic cells	DC2
+airway	surgical_resection	Endothelial	Blood vessels	EC venous	EC venous systemic
+airway	surgical_resection	Immune	Myeloid	Monocytes	Non-classical monocytes
+airway	biopsy	Stroma	Smooth muscle	Fibromyocytes	Fibromyocytes
+Inferior turbinate	biopsy	Epithelial	Submucosal Gland	Submucosal Secretory	SMG mucous
+parenchyma	donor_lung	Epithelial	Airway epithelium	Multiciliated lineage	Deuterosomal
+Intermediate Bronchi	biopsy	Stroma	Smooth muscle	Smooth muscle	Smooth muscle
+Inferior turbinate	brush	Epithelial	Airway epithelium	Rare	Ionocyte
+Trachea	biopsy	Immune	Lymphoid	T cell lineage	CD8 T cells
+airway	surgical_resection	Stroma	Fibroblast lineage	Fibroblasts	Adventitial fibroblasts
+parenchyma	surgical_resection	Immune	Lymphoid	B cell lineage	B cells
+Inferior turbinate	brush	Epithelial	Submucosal Gland	Submucosal Secretory	SMG duct
