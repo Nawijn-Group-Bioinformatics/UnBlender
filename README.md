@@ -11,7 +11,7 @@ UnBlender allows respiratory scientists to perform cell type deconvolution with 
 Deconvolution analyses run a very realistic risk of generating meaningless results. For reliable cell type deconvolution, it is essential to test whether the chosen approach is feasible in the sample type.
 
 **How does UnBlender evaluate accuracy?** 
-In short: by deconvoluting pseudo-bulk samples with a known cell type composition. More information can be found in [#TODO].
+In short: by deconvoluting pseudo-bulk samples with a known cell type composition. More information can be found in [the bioRxiv preprint](https://doi.org/10.64898/2026.06.01.727709).
 
 **Which sample types are available?** 
 At the moment, UnBlender evaluates deconvolution strategies for nasal brush, bronchial brush, bronchial biopsy and parenchymal resection samples.
@@ -103,10 +103,10 @@ The cell type selection to deconvolute into (`cell_types`) should be specified a
     - "Multiciliated lineage"
 ```
 
-##### Using UnBlender with custom reference data
+#### Using UnBlender with custom reference data
 It is possible to use the UnBlender CLI with your own scRNA-seq reference dataset. The reference data object should be saved in a .h5ad file and only contain data matching the relevant sample type. It should have an `adata.obs["sample"]` column that indicates the sample IDs that will be used to generate the ground truth pseudobulk that will be used to validate the deconvolution approach. The adata.var.index should contain gene names or identifiers.
 
-*Additional parameterization:*
+#####Additional parameterization:#####
 In addition to the previously mentioned parameterization, you will need to add the following:
 ```
 # Your reference file saved in /source:
@@ -119,14 +119,16 @@ pseudobulk_samples: # either "all" or a list of samples
   - "sample_patient_3" # etc.
 ```
 
-It is recommended to generate at least 8 pseudobulk samples. Samples used as pseudobulks should be of adequate size. Instead of `ann_level_3_clean`, `ann_level_4_clean` etc. in the cell type selection, use the column name or names in adata.obs that contain the cell type labels you wish to deconvolute into.
+It is recommended to generate at least 7 pseudobulk samples, but more is better. Samples used as pseudobulks should be of adequate size. During cell type selection, instead of `ann_level_3_clean`, `ann_level_4_clean` etc. use the column name or names in adata.obs that contain the cell type labels you wish to deconvolute into.
 
 ------------------------------------------------------------------------
 
 ### Citing UnBlender
 
 Have you used UnBlender (GUI or CLI) to perform a cell type
-deconvolution analysis? Please cite UnBlender as: [#TODO]
+deconvolution analysis? Please cite UnBlender as:
+
+Gillett TE, van den Berge M, Nawijn MC, Koppelman GH. UnBlender: validating individual analyses in respiratory bulk RNA-seq cell type deconvolution. bioRxiv (2026). doi:[10.64898/2026.06.01.727709](https://doi.org/10.64898/2026.06.01.727709). 
 
 ### Questions?
 
