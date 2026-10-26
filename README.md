@@ -128,7 +128,7 @@ It is recommended to generate at least 7 pseudobulk samples, but more is better.
 Have you used UnBlender (GUI or CLI) to perform a cell type
 deconvolution analysis? Please cite UnBlender as:
 
-Gillett TE, van den Berge M, Nawijn MC, Koppelman GH. UnBlender: validating individual analyses in respiratory bulk RNA-seq cell type deconvolution. bioRxiv (2026). doi:[10.64898/2026.06.01.727709](https://doi.org/10.64898/2026.06.01.727709). 
+> Gillett TE, van den Berge M, Nawijn MC, Koppelman GH. *UnBlender: validating individual analyses in respiratory bulk RNA-seq cell type deconvolution.* bioRxiv (2026). doi:[10.64898/2026.06.01.727709](https://doi.org/10.64898/2026.06.01.727709). 
 
 ### Questions?
 
