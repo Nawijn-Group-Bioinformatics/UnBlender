@@ -79,6 +79,9 @@ elif sample_type == "bronchial_brush":
 	adata = adata[adata.obs['sample_type'] == 'brush']
 	adata = adata[adata.obs['anatomical_region_coarse'] == "Distal Bronchi"]
 
+elif sample_type == 'custom_ref':
+    pass # do nothing, custom ref should only contain relevant samples
+
 else:
 	sys.exit("ERROR: sample_type not valid: " + sample_type)
 
@@ -144,7 +147,7 @@ else:
 ### Extract & write the reference data with HUGO or ENSG IDs # TODO combine the two code blocks
 print('saving reference data')
 
-## Write for HUGO
+## Write for HUGO IDs
 adata = adata_subsampled
 
 # write scRNA-seq counts matrix with cols = samples and rows = genes
@@ -158,24 +161,26 @@ counts_withInfo = pd.DataFrame(adata.obs['GeneSymbols']).transpose()
 counts_withInfo = counts_withInfo.append(counts_layer)
 
 # write
-counts_withInfo.to_csv(output_path + "/" + sample_type + "_subsampled_matrix_max" + str(n_cells) + "cells_HUGO.txt", 
-                       header=False, sep='\t')
+counts_withInfo.to_csv(output_path + "/" + sample_type + "_subsampled_matrix_max" + str(n_cells) + "cells.txt", 
+                   header=False, sep='\t') # filename for HUGO output, ENSG IDs are next:
 
 
-## Write for ENSG
-adata = adata_subsampled
-        
-# write scRNA-seq counts matrix with cols = samples and rows = genes
-counts_layer = pd.DataFrame(adata.X.todense(), index=adata.obs.index, columns=adata.var['gene_ids'])    
-counts_layer = counts_layer.transpose()
+## Write for ENSG IDs
+if sample_type != 'custom_ref':
+    
+    adata = adata_subsampled
+            
+    # write scRNA-seq counts matrix with cols = samples and rows = genes
+    counts_layer = pd.DataFrame(adata.X.todense(), index=adata.obs.index, columns=adata.var['gene_ids'])    
+    counts_layer = counts_layer.transpose()
 
-# get labels as first row (calling it GeneSymbols to get the colname of the first col right)
-# (not entirely sure if that's neccessary, but let's run with it..)
-adata.obs['GeneSymbols'] = adata.obs['custom_label']
-counts_withInfo = pd.DataFrame(adata.obs['GeneSymbols']).transpose()
-counts_withInfo = counts_withInfo.append(counts_layer)
+    # get labels as first row (calling it GeneSymbols to get the colname of the first col right)
+    # (not entirely sure if that's neccessary, but let's run with it..)
+    adata.obs['GeneSymbols'] = adata.obs['custom_label']
+    counts_withInfo = pd.DataFrame(adata.obs['GeneSymbols']).transpose()
+    counts_withInfo = counts_withInfo.append(counts_layer)
 
-# write
-counts_withInfo.to_csv(output_path + "/" + sample_type + "_subsampled_matrix_max" + str(n_cells) + "cells_ENSG.txt", 
-                       header=False, sep='\t')
-print('\n')
+    # write
+    counts_withInfo.to_csv(output_path + "/" + sample_type + "_subsampled_matrix_max" + str(n_cells) + "cells_ENSG.txt", 
+                           header=False, sep='\t')
+    print('\n')

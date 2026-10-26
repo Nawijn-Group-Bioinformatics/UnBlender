@@ -29,12 +29,13 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 ### Load cell type selection from config file
 print('loading cell type selection')
 with open(config_yml, "r") as stream:
-	try:
-		temp = yaml.safe_load(stream)
-		include_cell_types = temp['cell_types']
+    try:
+        temp = yaml.safe_load(stream)
+        include_cell_types = temp['cell_types']
+        samples_to_include = temp['pseudobulk_samples']
 
-	except yaml.YAMLError as exc:
-		print(exc)
+    except yaml.YAMLError as exc:
+        print(exc)
 
 
 ### Function: get number of cells per cell type per sample (ground truth)
@@ -100,30 +101,38 @@ def pseudobulk(adata, groupby):
 ### Identify samples to be used
 print("selecting pseudobulk samples")
 if sample_type == "parenchyma":
-	adata = adata[adata.obs['anatomical_region_coarse'] == 'parenchyma']
-	rdm.seed(0)
-	samples_to_include = rdm.sample(list(adata.obs.groupby(['sample']).size().index[adata.obs.groupby(['sample']).size() > 2500]), 20)
-	samples_to_include = sorted(samples_to_include)
+    adata = adata[adata.obs['anatomical_region_coarse'] == 'parenchyma']
+    rdm.seed(0)
+    samples_to_include = rdm.sample(list(adata.obs.groupby(['sample']).size().index[adata.obs.groupby(['sample']).size() > 2500]), 20)
+    samples_to_include = sorted(samples_to_include)
 
 elif sample_type == "bronchial_biopsy":
-	adata = adata[adata.obs['sample_type'] == 'biopsy']
-	adata = adata[adata.obs['anatomical_region_coarse'].isin(['airway','Intermediate Bronchi',"Trachea"])]
-	# get samples with >2500 UMIs
-	samples_to_include = adata.obs.groupby(['sample']).size().index[adata.obs.groupby(['sample']).size() > 2500]
+    adata = adata[adata.obs['sample_type'] == 'biopsy']
+    adata = adata[adata.obs['anatomical_region_coarse'].isin(['airway','Intermediate Bronchi',"Trachea"])]
+    # get samples with >2500 UMIs
+    samples_to_include = adata.obs.groupby(['sample']).size().index[adata.obs.groupby(['sample']).size() > 2500]
 
 elif sample_type == "nasal_brush":
-	adata = adata[adata.obs['sample_type'].isin(['brush', 'scraping'])]
-	adata = adata[adata.obs['anatomical_region_coarse'].isin(['nose','Inferior turbinate'])]
-	# get samples with >2500 UMIs
-	samples_to_include = adata.obs.groupby(['sample']).size().index[adata.obs.groupby(['sample']).size() > 2500]
+    adata = adata[adata.obs['sample_type'].isin(['brush', 'scraping'])]
+    adata = adata[adata.obs['anatomical_region_coarse'].isin(['nose','Inferior turbinate'])]
+    # get samples with >2500 UMIs
+    samples_to_include = adata.obs.groupby(['sample']).size().index[adata.obs.groupby(['sample']).size() > 2500]
 
 elif sample_type == "bronchial_brush":
-	adata = adata[adata.obs['sample_type'] == 'brush']
-	adata = adata[adata.obs['anatomical_region_coarse'] == "Distal Bronchi"]
-	samples_to_include = adata.obs.groupby(['sample']).size().index # using all of them
+    adata = adata[adata.obs['sample_type'] == 'brush']
+    adata = adata[adata.obs['anatomical_region_coarse'] == "Distal Bronchi"]
+    samples_to_include = adata.obs.groupby(['sample']).size().index # using all of them
+
+elif sample_type == 'custom_ref':
+    if samples_to_include == 'all':
+        samples_to_include = adata.obs.groupby(['sample']).size().index # using all of them
+    print('Number of cells per sample:')
+    print(adata.obs['sample'].value_counts())
+    print('\nGenerating pseudobulk samples for:')
+    print(samples_to_include)
 
 else:
-	sys.exit("ERROR: sample_type not valid: " + sample_type)
+    sys.exit("ERROR: sample_type not valid: " + sample_type)
 
 
 ### Subset HLCA to those samples 

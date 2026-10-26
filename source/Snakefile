@@ -10,15 +10,18 @@ config['n_cells'] = 300
 config['gene_IDs'] = "HUGO" # HUGO or ENSG
 config['correct_for_expression_levels'] ='correct_false' # correct_true or correct_false
 config['balanced_ref'] = 'balanced_false' # balanced_true or balanced_false
-config['HLCA_file'] = 'UnBlender_reference_file_HLCA.h5ad'
+
+config['ref_data'] = 'UnBlender_ref_data_HLCA.h5ad'
+if config['sample_type'] == 'custom_ref':
+	config['ref_data'] = config['reference_file']
 
 # Remove trailing slash of output dir if present
 if config['output_dir'].endswith('/'):
 	config['output_dir'] = config['output_dir'][:-1]
 
-print('##### UnBlender CLI v1.0 #####')
+print('##### UnBlender CLI v1.1 #####')
 print('Developed by: T.E. Gillett, University Medical Centre Groningen, NL')
-print('version 1.0 (25/05/2026)')
+print('version 1.1 (26/10/2026)')
 print('github.com/Nawijn-Group-Bioinformatics/UnBlender\n')
 
 print('Info: analysis configuration file:')
@@ -32,12 +35,12 @@ rule all:
 
 rule get_reference_data:
 	input:
-		config['HLCA_file']
+		config['ref_data']
 	output:
 		config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + 
-		str(config['n_cells']) + "cells_HUGO.txt" ,
-		config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + 
-		str(config['n_cells']) + "cells_ENSG.txt"
+		str(config['n_cells']) + "cells.txt" ,
+		# config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + 
+		# str(config['n_cells']) + "cells_ENSG.txt"
 	shell:
 		"python3 get_reference_data.py " + config['sample_type'] + ' ' + str(config['n_cells'])  + 
 		' {input} ' + config['output_dir'] + ' ' + config['config_filename'] + ' ' + 
@@ -47,7 +50,7 @@ rule get_reference_data:
 rule filter_reference_data: 
 	input:
 		config['output_dir'] + "/" + config['sample_type'] + "_subsampled_matrix_max" + 
-			str(config['n_cells']) + "cells_HUGO.txt"
+			str(config['n_cells']) + "cells.txt"
 	output:
 		config['output_dir'] + "/" + config['sample_type'] + "_deconvolution_reference_data.txt"
 	shell:
@@ -56,13 +59,13 @@ rule filter_reference_data:
 
 rule get_pseudobulks_and_ground_truth:
 	input:
-		config['HLCA_file'] 
+		config['ref_data'] 
 	output:
 		config['output_dir'] + '/cell_counts.csv',
 		config['output_dir'] + '/pseudobulks.csv'
 	shell:
 		"python3 get_pseudobulks.py " + config['sample_type'] + ' ' + config['config_filename'] + ' ' +  
-		config['HLCA_file'] + ' ' + config['output_dir']
+		config['ref_data'] + ' ' + config['output_dir']
 
 
 rule deconvolute_pseudobulks:
@@ -108,7 +111,7 @@ rule evaluate_deconvolution:
 		"/CIBERSORTx_output/" + 'CIBERSORTx_' + config['sample_type'] + 
 		"_deconvolution_reference_data_inferred_phenoclasses.CIBERSORTx_" + config['sample_type'] + 
 		"_subsampled_matrix_max" + str(config['n_cells']) +
-		'cells_HUGO_filtered_inferred_refsample.bm.K999.txt;' +
+		'cells_filtered_inferred_refsample.bm.K999.txt;' +
 
 		# clean up
 		'rm ' + config['output_dir'] + '/cell_counts.csv; rm ' + config['output_dir'] + '/pseudobulks.csv; ' +

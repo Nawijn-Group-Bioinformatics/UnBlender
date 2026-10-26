@@ -79,8 +79,7 @@ You'll need to select the relevant sample type and a set of cell type labels to 
 
 An example file (example_config.yaml) is provided which shows how to configure the following:
 -   `config_filename`: configuration .yaml file*
--   `sample_type`: `"parenchyma"`, `"bronchial_brush"`, `"nasal_brush"`,
-    or `"bronchial_biopsy"`
+-   `sample_type`: `"parenchyma"`, `"bronchial_brush"`, `"nasal_brush"`, or `"bronchial_biopsy"` (or `"custom_ref"` for a custom reference, see below for more information)
 -   `output_dir`: the output directory*
 -   `filter_reference`: `"no_filter"`, or optionally: a text file* containing genes (HGNC names, one per line) to exclude from the analysis
 -   `email`: the email address to run CIBERSORTx with
@@ -103,6 +102,24 @@ The cell type selection to deconvolute into (`cell_types`) should be specified a
   - - "ann_level_3_clean"
     - "Multiciliated lineage"
 ```
+
+##### Using UnBlender with custom reference data
+It is possible to use the UnBlender CLI with your own scRNA-seq reference dataset. The reference data object should be saved in a .h5ad file and only contain data matching the relevant sample type. It should have an `adata.obs["sample"]` column that indicates the sample IDs that will be used to generate the ground truth pseudobulk that will be used to validate the deconvolution approach. The adata.var.index should contain gene names or identifiers.
+
+*Additional parameterization:*
+In addition to the previously mentioned parameterization, you will need to add the following:
+```
+# Your reference file saved in /source:
+reference_file: "UnBlender_reference_file_IL-13_ALIs.h5ad"
+
+# Samples from which to generate pseudobulks
+pseudobulk_samples: # either "all" or a list of samples
+  - "sample_patient_1"
+  - "sample_patient_2"
+  - "sample_patient_3" # etc.
+```
+
+It is recommended to generate at least 8 pseudobulk samples. Samples used as pseudobulks should be of adequate size. Instead of `ann_level_3_clean`, `ann_level_4_clean` etc. in the cell type selection, use the column name or names in adata.obs that contain the cell type labels you wish to deconvolute into.
 
 ------------------------------------------------------------------------
 
